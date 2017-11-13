@@ -62,7 +62,9 @@ ul {list-style-type: square;}
 .italic {font-style:italic;}
 .border-t {border-top:solid 1px #ddd;}
 .text-grey {color:#bbb;}
-
+.w-half {width:50%;}
+.float-l {float:left;}
+.clearfix:after {content:"";display:table;clear:both;}
 
 @media (max-width:480px){
   html {
