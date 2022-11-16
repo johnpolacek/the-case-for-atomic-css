@@ -1,411 +1,661 @@
 <!DOCTYPE html>
 <html>
-	<head>
-	  <meta charset="utf-8">
-	  <title>The Case for Atomic / Utility-First CSS</title>
-	  <meta title="description" content="A collection of articles, case studies, conference talks and examples demonstrating the benefits of Atomic CSS (also known as Utility First or Functional CSS)">
-	  <meta title="author" content="John Polacek">
-	  <meta name="viewport" content="width=device-width,initial-scale=1">
-	  <style>html{line-height:1.8;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;font-family:-apple-system,BlinkMacSystemFont,avenir next,avenir,helvetica neue,helvetica,ubuntu,roboto,noto,segoe ui,arial,sans-serif;color:#333;font-size:18px;box-sizing:border-box}*,*:before,*:after{box-sizing:inherit}h1,.h1{font-size:4rem;line-height:1}h2,.h2{font-size:3.2rem;line-height:1.1}h3,.h3{font-size:2.4rem;line-height:1.2}h4,.h4{font-size:2rem;line-height:1.4}h5,.h5{font-size:1.6rem;line-height:1.6}h6,.h6{font-size:1.2rem;line-height:1.8}h1,h2,h3,h4,h5,h6{margin:0}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-0.25em}sup{top:-0.5em}a{color:#0074d9}ul{list-style-type:square}.pad-1{padding:.5rem}.pad-1-b{padding-bottom:.5rem}.pad-2{padding:1rem}.pad-2-b{padding-bottom:1rem}.pad-3{padding:2rem}.pad-3-b{padding-bottom:2rem}.block-960{width:100%;max-width:960px}.block-center{margin-left:auto;margin-right:auto}.normal{font-weight:normal}.italic{font-style:italic}.border-t{border-top:solid 1px #ddd}.text-grey{color:#bbb}.w-half{width:50%}.float-l{float:left}@media (max-width:480px){html{font-size:16px}.s-h2{font-size:3rem}.s-pad-2{padding:1rem}}.clearfix:after {content:"";display:table;clear:both;}</style>
-	</head>
-	<body>
-		<section>
-			<div class="block-960 block-center pad-3 s-pad-2">
-				<h1 class="h3 pad-3-b">The Case for Atomic / Utility-First CSS</h1>
-				<p class="h6">A collection of various content detailing and demonstrating the benefits of Atomic CSS, also&nbsp;known as Utility First or Functional CSS.</p>
-				<p class="italic">The term <strong>Atomic CSS</strong> refers to an architectural philosophy, not any one particular library or framework, and encompasses both static (e.g. <a href="http://tachyons.io/">Tachyons</a>, <a href="https://tailwindcss.com/">Tailwind</a>) and programmatic (e.g. <a href="https://styled-components.com/">Styled Components</a>, <a href="https://emotion.sh/">Emotion</a>, <a href="https://theme-ui.com/">Theme UI</a>, <a href="http://ACSS.io">ACSS.io</a>) approaches. For a clear definition and information on related terminology, read <a href="https://css-tricks.com/lets-define-exactly-atomic-css/">Let&rsquo;s Define Exactly What Atomic CSS is</a>.</p>
-				<p class="italic pad-3-b">Many of those who brought forth this approach were inspired by the groundbreaking 2009-2011 work of <a href="http://www.stubbornella.org/">Nicole Sullivan</a> on <a href="https://github.com/stubbornella/oocss/wiki">OOCSS</a> (for more historical context, <a href="git@github.com:johnpolacek/the-case-for-atomic-css.git">read this</a>).</p>
-				<p><small><strong>Missing something?</strong> Suggest new content via <a href="https://github.com/johnpolacek/the-case-for-atomic-css">GitHub</a> or <a href="https://twitter.com/johnpolacek">Twitter</a></small></p>
-			</div>
-		</section>
-		<section class="border-t">
-			<div class="block-960 block-center pad-3 s-pad-2">
-				<h2 class="h5">Foundational Posts</h2>
-				<ul>
-					<li class="pad-2-b">
-						<a class="h5" href="https://www.smashingmagazine.com/2013/10/challenging-css-best-practices-atomic-approach/">Challenging CSS Best Practices</a>
-						<div>by Thierry Koblenz</div>
-						<em><small>October 21, 2013</small></em>
-					</li>
-					<li class="pad-2-b">
-						<a class="h5" href="http://mrmrs.cc/writing/scalable-css/">CSS and Scalability</a>
-						<div>by Adam Morse</div>
-						<em><small>March 24, 2016</small></em>
-					</li>
-					<li class="pad-2-b">
-						<a class="h5" href="https://adamwathan.me/css-utility-classes-and-separation-of-concerns/">CSS Utility Classes and &lsquo;Separation of Concerns&rsquo;</a>
-						<div>by Adam Wathan</div>
-						<em><small>August 7, 2017</small></em>
-					</li>
-				</ul>
-			</div>
-		</section>
-		<section class="border-t">
-			<div class="block-960 block-center pad-3 s-pad-2">
-				<h2 class="h5">Articles and Case Studies</h2>
-				<ul>
-					<li class="pad-2-b">
-						<a class="h5" href="https://tympanus.net/codrops/2013/01/22/defending-presentational-class-names/">Defending Presentational Class Names</a>
-						<div>by Philip Walton</div>
-						<em><small>January 22, 2013</small></em>
-					</li>
-					<li class="pad-2-b">
-						<a class="h5" href="https://seesparkbox.com/foundry/naming_css_stuff_is_really_hard">Naming CSS Stuff is Really Hard</a>
-						<div>by Ethan Muller</div>
-						<em><small>October 21, 2013</small></em>
-					</li>
-					<li class="pad-2-b">
-						<a class="h5" href="https://www.lucidchart.com/techblog/2014/01/31/atomic-css-tool-set/">Atomic CSS as a toolset</a>
-						<div>by Alma Madsen</div>
-						<em><small>January 31, 2014</small></em>
-					</li>
-					<li class="pad-2-b">
-						<a class="h5" href="https://acss.io/thinking-in-atomic.html">Thinking in Atomic</a>
-						<div>by ACSS.io</div>
-						<em><small>April 30, 2015</small></em>
-					</li>
-					<li class="pad-2-b">
-						<a class="h5" href="http://jxnblk.com/writing/posts/rethinking-variables-in-css/">Rethinking Variables in CSS</a>
-						<div>by Brent Jackson</div>
-						<em><small>May 8, 2015</small></em>
-					</li>
-					<li class="pad-2-b">
-						<a class="h5" href="https://csswizardry.com/2015/06/contextual-styling-ui-components-nesting-and-implementation-detail/">Contextual Styling: UI Components, Nesting and Implementation&nbsp;Detail</a>
-						<div>by Harry Roberts</div>
-						<em><small>June 13, 2015</small></em>
-					</li>
-					<li class="pad-2-b">
-						<a class="h5" href="http://www.jon.gold/2015/07/functional-css/">Functional Programming, CSS, and your sanity</a>
-						<div>by Jon Gold</div>
-						<em><small>June 30, 2015</small></em>
-					</li>
-					<li class="pad-2-b">
-						<a class="h5" href="https://medium.com/@cole_peters/building-and-shipping-functional-css-4f29b947bcb9">Building and shipping functional CSS</a>
-						<div>by Cole Peters <small><em>(case study)</em></small></div>
-						<em><small>November 30, 2015</small></em>
-					</li>
-					<li class="pad-2-b">
-						<a class="h5" href="https://medium.com/buzzfeed-design/introducing-solid-1c16b1bf4868">Introducing Solid</a>
-						<div>by Emily Brick</div>
-						<em><small>December 2, 2015</small></em>
-					</li>
-					<li class="pad-2-b">
-						<a class="h5" href="http://johnpolacek.github.io/expressive-css/">Expressive CSS</a>
-						<div>by John Polacek</div>
-						<em><small>December 5, 2015</small></em>
-					</li>
-					<li class="pad-2-b">
-						<a class="h5" href="https://medium.com/buzzfeed-design/how-i-learned-to-stop-worrying-and-love-the-atomic-class-98d6ccc45781">How I Learned to Stop Worrying and Love the Atomic Class</a>
-						<div>by Sam Thurman</div>
-						<em><small>February 3, 2016</small></em>
-					</li>
-					<li class="pad-2-b">
-						<a class="h5" href="https://medium.com/techspiration-ideas-making-it-happen/future-css-dbc2cb8f1baf">Future CSS</a>
-						<div>by J. Ky Marsh</div>
-						<em><small>April 3, 2016</small></em>
-					</li>
-					<li class="pad-2-b">
-						<a class="h5" href="https://web.archive.org/web/20180331135805/http://cssmojo.com/a-retort-to-reuse-on-maintainablecss/">Reuse or not reuse...</a>
-						<div>by Thierry Koblentz</div>
-						<em><small>May 26, 2016</small></em>
-					</li>
-					<li class="pad-2-b">
-						<a class="h5" href="https://marcelosomers.com/writing/rationalizing-functional-css/">Rationalizing Functional CSS</a>
-						<div>by Marcelo Somers</div>
-						<em><small>June 9, 2016</small></em>
-					</li>
-					<li class="pad-2-b">
-						<a class="h5" href="https://medium.com/@dakotaleemartinez/keeping-your-css-dry-with-tachyons-bb1c0dc66dce">Keeping your CSS Dry with Tachyons</a>
-						<div>by Dakota Lee Martinez</div>
-						<em><small>June 23, 2016</small></em>
-					</li>
-					<li class="pad-2-b">
-						<a class="h5" href="https://github.com/chibicode/react-functional-css-protips">Functional CSS — The Good, The Bad, and Some Protips for React.js&nbsp;Users</a>
-						<div>by Shu Uesugi</div>
-						<em><small>August 10, 2016</small></em>
-					</li>
-					<li class="pad-2-b">
-						<a class="h5" href="https://medium.engineering/simple-style-sheets-c3b588867899">Simple Style Sheets</a>
-						<div>by Anton Kovalyov</div>
-						<em><small>September 28, 2016</small></em>
-					</li>
-					<li class="pad-2-b">
-						<a class="h5" href="https://medium.com/@philipardeljan/15kb-of-css-is-all-youll-ever-need-%EF%B8%8F-634da7258338">15kb of CSS is all you&rsquo;ll ever need</a>
-						<div>by Philip Ardeljan</div>
-						<em><small>November 16, 2016</small></em>
-					</li>
-					<li class="pad-2-b">
-						<a class="h5" href="http://milanogw.net/front-end-strategy-for-products-that-scale">Front end strategy for products that scale</a>
-						<div>by Emil Milanov</div>
-						<em><small>November 20, 2016</small></em>
-					</li>
-					<li class="pad-2-b">
-						<a class="h5" href="https://medium.com/@johnpolacek/kiss-my-classname-a-counterpoint-3ca41f0aed1a">Kiss My Classname: A Counterpoint</a>
-						<div>by John Polacek</div>
-						<em><small>January 8, 2017</small></em>
-					</li>
-					<li class="pad-2-b">
-						<a class="h5" href="https://blog.dnsimple.com/2017/01/CSS-journey/">The journey of simplifying our CSS</a>
-						<div>by Sebastian Hermida</div>
-						<em><small>January 17, 2017</small></em>
-					</li>
-					<li class="pad-2-b">
-						<a class="h5" href="https://web.archive.org/web/20180331141150/http://cssmojo.com/opinions_of_leaders_considered_harmful/">Opinions of Leaders Considered Harmful</a>
-						<div>by Thierry Koblenz</div>
-						<em><small>January 22, 2017</small></em>
-					</li>
-					<li class="pad-2-b">
-						<a class="h5" href="http://danmall.me/articles/cooking-with-design-systems/">Cooking with Design Systems</a>
-						<div>by Dan Mall</div>
-						<em><small>February 28, 2017</small></em>
-					</li>
-					<li class="pad-2-b">
-						<a class="h5" href="https://hackernoon.com/full-re-write-with-tachyons-and-functional-css-a-case-study-part-1-635ccb5fb00b">Full re-write in 10 days with tachyons and functional CSS</a>
-						<div>by Simon Vrachliotis <small><em>(case study)</em></small></div>
-						<em><small>February 28, 2017</small></em>
-					</li>
-					<li class="pad-2-b">
-						<a class="h5" href="https://medium.com/@johnpolacek/by-the-numbers-a-year-and-half-with-atomic-css-39d75b1263b4">By The Numbers: A Year and Half with Atomic CSS</a>
-						<div>by John Polacek</div>
-						<em><small>May 31, 2017</small></em>
-					</li>
-					<li class="pad-2-b">
-						<a class="h5" href="https://medium.com/the-many/takeaways-from-trying-out-tachyons-css-after-ages-using-bem-14c11a11dc2a">Takeaways from trying out Tachyons CSS after ages using BEM</a>
-						<div>by Callum Jefferies</div>
-						<em><small>October 13, 2017</small></em>
-					</li>
-					<li class="pad-2-b">
-						<a class="h5" href="https://paulund.co.uk/using-a-utility-css-library">Using a Utility CSS Library</a>
-						<div>by Paul Underwood</div>
-						<em><small>November 20, 2017</small></em>
-					</li>
-					<li class="pad-2-b">
-						<a class="h5" href="https://css-tricks.com/growing-popularity-atomic-css/">On the Growing Popularity of Atomic CSS</a>
-						<div>by Ollie Williams</div>
-						<em><small>November 24, 2017</small></em>
-					</li>
-					<li class="pad-2-b">
-						<a class="h5" href="https://medium.freecodecamp.org/acss-a-dynamic-atomic-css-library-402dff9756e0">How to write better CSS in teams with ACSS — A dynamic Atomic CSS library</a>
-						<div>by Kushagra Gour</div>
-						<em><small>January 4, 2018</small></em>
-					</li>
-					<li class="pad-2-b">
-						<a class="h5" href="https://medium.freecodecamp.org/in-defense-of-utility-first-css-4f406acee6fb">In Defense of Utility-First CSS</a>
-						<div>by Sarah Dayan</div>
-						<em><small>January 26, 2018</small></em>
-					</li>
-					<li class="pad-2-b">
-						<a class="h5" href="https://familiar.studio/blog/utility-first-css-framework">On Moving to a Utility-first CSS Framework</a>
-						<div>by Debra Ohayon</div>
-						<em><small>February 28, 2018</small></em>
-						<div><small><a href="">See Slides</a></small></div>
-					</li>
-					<li class="pad-2-b">
-						<a class="h5" href="https://www.mikecr.it/ramblings/utility-classes-vs-inline-styles/">Utility classes vs. inline styles</a>
-						<div>by Mike Crittenden</div>
-						<em><small>May 4, 2018</small></em>
-					</li>
-					<li class="pad-2-b">
-						<a class="h5" href="https://blog.rangle.io/styling-with-functional-css/">Simplify Styling with Functional CSS</a>
-						<div>by Harry Nicholls</div>
-						<em><small>October 18, 2018</small></em>
-					</li>
-					<li class="pad-2-b">
-						<a class="h5" href="https://jvns.ca/blog/2018/11/01/tailwind--write-css-without-the-css/">Tailwind: style your site without writing any CSS!</a>
-						<div>by Julia Evans</div>
-						<em><small>November 1, 2018</small></em>
-					</li>
-					<li class="pad-2-b">
-						<a class="h5" href="https://blog.algolia.com/redesigning-our-docs-part-4-building-a-scalable-css-architecture/">Redesigning Our Docs – Part 4 – Building a Scalable CSS Architecture</a>
-						<div>by Sarah Dayan</div>
-						<em><small>March 14th, 2019</small></em>
-					</li>
-					<li class="pad-2-b">
-						<a class="h5" href="https://blog.logrocket.com/css-utility-classes-library-extendable-styles/">CSS utility classes: Your library of extendable styles</a>
-						<div>by Russell Bishop</div>
-						<em><small>October 23rd, 2019 </small></em>
-					</li>
-					<li class="pad-2-b">
-						<a class="h5" href="https://mxstbr.com/thoughts/tailwind/">Why I Love Tailwind</a>
-						<div>by Max Stoiber</div>
-						<em><small>December 7, 2020</small></em>
-					</li>
-					<li class="pad-2-b">
-						<a class="h5" href="https://frontstuff.io/no-utility-classes-arent-the-same-as-inline-styles">No, Utility Classes Aren't the Same As Inline Styles</a>
-						<div>by Sarah Dayan</div>
-						<em><small>May 16, 2021</small></em>
-					</li>
-				</ul>
-			</div>
-		</section>
-		<section class="border-t">
-			<div class="block-960 block-center pad-3 s-pad-2">
-				<h2 class="h5">Presentations</h2>
-				<ul>
-					<li class="pad-2-b">
-						<a class="h5" href="https://www.slideshare.net/renatoiwa/acss?qid=2ba9f704-b9cd-42cc-8c4c-e26daa7f2df5&v=&b=&from_search=9">ACSS: Rethinking CSS Best Practices</a>
-						<div>by Renato Iwashima</div>
-						<em><small>October 23, 2013</small></em>
-						<div><small><a href="https://www.youtube.com/watch?v=ojj_-6Xiud4">Watch Video</a></small></div>
-					</li>
-					<li class="pad-2-b">
-						<a class="h5" href="https://www.haikudeck.com/atomic-css-science-and-technology-presentation-dJ0xlFjhBQ">Atomic CSS</a>
-						<div>by Thierry Koblenz</div>
-						<em><small>November 18, 2013</small></em>
-						<div><small><a href="https://www.youtube.com/watch?v=bokjM0ZaizQ">Watch Video</a></small></div>
-					</li>
-					<li class="pad-2-b">
-						<a class="h5" href="https://docs.google.com/presentation/d/14u8U6Oxt8RUIFmDjaAuMtJflIHKIZ-FQnHbbSv2tAjM/edit#slide=id.g53a38b223_4_75">Atomic CSS: How to Take Control of Your CSS</a>
-						<div>by Amelia Downs</div>
-						<em><small>December 4, 2014</small></em>
-						<div><small><a href="https://www.youtube.com/watch?v=P2seO1yYz88">Watch Video</a></small></div>
-					</li>
-					<li class="pad-2-b">
-						<a class="h5" href="https://brendansudol.com/writing/atomic-css">Atomic CSS: Learning to love presentational classes</a>
-						<div>by Brendan Subol</div>
-						<em><small>October 30, 2016</small></em>
-						<div><small><a href="https://brendansudol.com/decks/atomic-css/#/">See Slides</a></small></div>
-					</li>
-					<li class="pad-2-b">
-						<a class="h5" href="https://www.slideshare.net/pivorak/functional-immutable-css">Functional Immutable CSS</a>
-						<div>by Alex Topolyanskiy</div>
-						<em><small>December 26, 2016</small></em>
-						<div><small><a href="https://www.youtube.com/watch?v=Fjv30ZIYtyg&t=192s">Watch Video</a></small></div>
-					</li>
-					<li class="pad-2-b">
-						<a class="h5" href="http://johnpolacek.com/rethinking/">Rethinking CSS</a>
-						<div>by John Polacek</div>
-						<em><small>June 3, 2017</small></em>
-						<div><small><a href="http://johnpolacek.com/rethinking/">See Slides</a></small></div>
-					</li>
-					<li class="pad-2-b">
-						<a class="h5" href="http://slides.com/simonswiss/utility-first-all-the-rage#/">Utility-First CSS: What’s all the rage?</a>
-						<div>by Simon Vrachliotis</div>
-						<em><small>December 13, 2017</small></em>
-						<div><small><a href="http://slides.com/simonswiss/utility-first-all-the-rage#/">See Slides</a></small></div>
-					</li>
-					<li class="pad-2-b">
-						<a class="h5" href="http://assets.eli.wtf/talks/functional-css-concatenate-2018/">Functional CSS: Clean & composable UI on massive apps</a>
-						<div>by Eli Fitch</div>
-						<em><small>August 11, 2018</small></em>
-						<div><small><a href="http://assets.eli.wtf/talks/functional-css-concatenate-2018/">See Slides</a></small></div>
-					</li>
-					<li class="pad-2-b">
-						<a class="h5" href="http://assets.eli.wtf/talks/functional-css-concatenate-2018/">A Real-Life Journey Into the Opinionated World of “Utility-First” CSS</a>
-						<div>by Simon Vrachliotis</div>
-						<em><small>October 29, 2018</small></em>
-						<div><small><a href="https://vimeo.com/294976504">Watch Video</a></small></div>
-					</li>
-					<li class="pad-2-b">
-						<a class="h5" href="https://www.dotconferences.com/2019/12/sarah-dayan-in-defense-of-utility-first-css">In Defense of Utility-First CSS</a>
-						<div>by Sarah Dayan</div>
-						<em><small>December 4, 2019</small></em>
-						<div><small><a href="https://vimeo.com/294976504">Watch Video</a></small></div>
-					</li>
-				</ul>
-			</div>
-		</section>
-		<section class="border-t">
-			<div class="block-960 block-center pad-3 s-pad-2">
-				<h2 class="h5">Other</h2>
-				<ul>
-					<li class="pad-2-b">
-						<a class="h5" href="https://github.com/tachyons-css/tachyons/issues/12">How is tachyons different from inline styles?</a>
-						<div>Discussion on the Tachyons GitHub Project</div>
-						<em><small>October 20, 2014</small></em>
-					</li>
-					<li class="pad-2-b">
-						<a class="h5" href="https://spec.fm/podcasts/does-not-compute/33746">Falling With Style</a>
-						<div>by Does Not Compute <small><em>(podcast)</em></small></div>
-						<em><small>March 29, 2016</small></em>
-					</li>
-					<li class="pad-2-b">
-						<a class="h5" href="https://twitter.com/_dte/status/726002852934594560">Here’s why I think designing systems with tools/frameworks like Tachyons is a Good Idea&trade;</a>
-						<div>by Daniel Eden <small><em>(series of tweets)</em></small></div>
-						<em><small>April 29, 2016</small></em>
-					</li>
-					<li class="pad-2-b">
-						<a class="h5" href="http://www.fullstackradio.com/68">68: Building Interfaces with Utility-First CSS</a>
-						<div>by Full Stack Radio <small><em>(podcast)</em></small></div>
-						<em><small>July 19, 2017</small></em>
-					</li>
-					<li class="pad-2-b">
-						<a class="h5" href="https://simplecast.com/s/e6183d31">75: Diana Mounter - Design Systems and Utility Classes at GitHub</a>
-						<div>by Full Stack Radio <small><em>(podcast)</em></small></div>
-						<em><small>October 25, 2017</small></em>
-					</li>
-					<li class="pad-2-b">
-						<a class="h5" href="http://www.fullstackradio.com/76">76: Tailwind CSS vs. the World</a>
-						<div>by Full Stack Radio <small><em>(podcast)</em></small></div>
-						<em><small>November 8, 2017</small></em>
-					</li>
-					<li class="pad-2-b">
-						<a class="h5" href="https://changelog.com/podcast/272">Functional CSS and Tachyons with Adam Morse</a>
-						<div>by The Changelog <small><em>(podcast)</em></small></div>
-						<em><small>November 10, 2017</small></em>
-					</li>
-					<li class="pad-2-b">
-						<a class="h5" href="https://devmode.fm/episodes/tailwind-css-utility-first-css-with-adam-watham">Tail­wind CSS util­i­ty-first CSS with Adam Wathan</a>
-						<div>by devMode.fm <small><em>(podcast)</em></small></div>
-						<em><small>December 22, 2017</small></em>
-					</li>
-				</ul>
-			</div>
-		</section>
-		<section class="border-t">
-			<div class="block-960 block-center pad-3 s-pad-2">
-				<h2 class="h5">Companies Using Atomic CSS in Production</h2>
-				<ul class="pad-3-b clearfix">
-					<li class="pad-2-b w-half float-l">
-						<span class="h6">Facebook</span>
-					</li>
-					<li class="pad-2-b w-half float-l">
-						<span class="h6">Yahoo!</span>
-					</li>
-					<li class="pad-2-b w-half float-l">
-						<span class="h6">GitHub</span>
-					</li>
-					<li class="pad-2-b w-half float-l">
-						<span class="h6">Medium</span>
-					</li>
-					<li class="pad-2-b w-half float-l">
-						<span class="h6">Kickstarter</span>
-					</li>
-					<li class="pad-2-b w-half float-l">
-						<span class="h6">Twitch</span>
-					</li>
-					<li class="pad-2-b w-half float-l">
-						<span class="h6">TED</span>
-					</li>
-					<li class="pad-2-b w-half float-l">
-						<span class="h6">Buzzfeed</span>
-					</li>
-					<li class="pad-2-b w-half float-l">
-						<span class="h6">Tinder</span>
-					</li>
-					<li class="pad-2-b w-half float-l">
-						<span class="h6">Stack Overflow</span>
-					</li>
-					<li class="pad-2-b w-half float-l">
-						<span class="h6">Heroku</span>
-					</li>
-					<li class="pad-2-b w-half float-l">
-						<span class="h6">Marvel App</span>
-					</li>
-					<li class="pad-2-b w-half float-l">
-						<span class="h6">Algolia</span>
-					</li>
-					<li class="pad-2-b w-half float-l">
-						<span class="h6">Segment</span>
-					</li>
-					<li class="pad-2-b w-half float-l">
-						<span class="h6">Stripe</span>
-					</li>
-					<li class="pad-2-b float-l">
-						<span>See also <a href="http://tachyons.io/gallery/">Made with Tachyons Gallery</a></span>
-					</li>
-				</ul>
-			</div>
-		</section>
-	</body>
+
+<head>
+	<meta charset="utf-8">
+	<title>The Case for Atomic / Utility-First CSS</title>
+	<meta title="description"
+		content="A collection of articles, case studies, conference talks and examples demonstrating the benefits of Atomic CSS (also known as Utility First or Functional CSS)">
+	<meta title="author" content="John Polacek">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<style>
+		html {
+			line-height: 1.8;
+			-ms-text-size-adjust: 100%;
+			-webkit-text-size-adjust: 100%;
+			font-family: -apple-system, BlinkMacSystemFont, avenir next, avenir, helvetica neue, helvetica, ubuntu, roboto, noto, segoe ui, arial, sans-serif;
+			color: #333;
+			font-size: 18px;
+			box-sizing: border-box
+		}
+
+		*,
+		*:before,
+		*:after {
+			box-sizing: inherit
+		}
+
+		h1,
+		.h1 {
+			font-size: 4rem;
+			line-height: 1
+		}
+
+		h2,
+		.h2 {
+			font-size: 3.2rem;
+			line-height: 1.1
+		}
+
+		h3,
+		.h3 {
+			font-size: 2.4rem;
+			line-height: 1.2
+		}
+
+		h4,
+		.h4 {
+			font-size: 2rem;
+			line-height: 1.4
+		}
+
+		h5,
+		.h5 {
+			font-size: 1.6rem;
+			line-height: 1.6
+		}
+
+		h6,
+		.h6 {
+			font-size: 1.2rem;
+			line-height: 1.8
+		}
+
+		h1,
+		h2,
+		h3,
+		h4,
+		h5,
+		h6 {
+			margin: 0
+		}
+
+		sub,
+		sup {
+			font-size: 75%;
+			line-height: 0;
+			position: relative;
+			vertical-align: baseline
+		}
+
+		sub {
+			bottom: -0.25em
+		}
+
+		sup {
+			top: -0.5em
+		}
+
+		a {
+			color: #0074d9
+		}
+
+		ul {
+			list-style-type: square
+		}
+
+		.pad-1 {
+			padding: .5rem
+		}
+
+		.pad-1-b {
+			padding-bottom: .5rem
+		}
+
+		.pad-2 {
+			padding: 1rem
+		}
+
+		.pad-2-b {
+			padding-bottom: 1rem
+		}
+
+		.pad-3 {
+			padding: 2rem
+		}
+
+		.pad-3-b {
+			padding-bottom: 2rem
+		}
+
+		.block-960 {
+			width: 100%;
+			max-width: 960px
+		}
+
+		.block-center {
+			margin-left: auto;
+			margin-right: auto
+		}
+
+		.normal {
+			font-weight: normal
+		}
+
+		.italic {
+			font-style: italic
+		}
+
+		.border-t {
+			border-top: solid 1px #ddd
+		}
+
+		.text-grey {
+			color: #bbb
+		}
+
+		.w-half {
+			width: 50%
+		}
+
+		.float-l {
+			float: left
+		}
+
+		@media (max-width:480px) {
+			html {
+				font-size: 16px
+			}
+
+			.s-h2 {
+				font-size: 3rem
+			}
+
+			.s-pad-2 {
+				padding: 1rem
+			}
+		}
+
+		.clearfix:after {
+			content: "";
+			display: table;
+			clear: both;
+		}
+	</style>
+</head>
+
+<body>
+	<section>
+		<div class="block-960 block-center pad-3 s-pad-2">
+			<h1 class="h3 pad-3-b">The Case for Atomic / Utility-First CSS</h1>
+			<p class="h6">A collection of various content detailing and demonstrating the benefits of Atomic CSS,
+				also&nbsp;known as Utility First or Functional CSS.</p>
+			<p class="italic">The term <strong>Atomic CSS</strong> refers to an architectural philosophy, not any one
+				particular library or framework, and encompasses both static (e.g. <a href="http://tachyons.io/">Tachyons</a>,
+				<a href="https://tailwindcss.com/">Tailwind</a>) and programmatic (e.g. <a
+					href="https://styled-components.com/">Styled Components</a>, <a href="https://emotion.sh/">Emotion</a>, <a
+					href="https://theme-ui.com/">Theme UI</a>, <a href="http://ACSS.io">ACSS.io</a>) approaches. For a clear
+				definition and information on related terminology, read <a
+					href="https://css-tricks.com/lets-define-exactly-atomic-css/">Let&rsquo;s Define Exactly What Atomic CSS
+					is</a>.
+			</p>
+			<p class="italic pad-3-b">Many of those who brought forth this approach were inspired by the groundbreaking
+				2009-2011 work of <a href="http://www.stubbornella.org/">Nicole Sullivan</a> on <a
+					href="https://github.com/stubbornella/oocss/wiki">OOCSS</a> (for more historical context, <a
+					href="git@github.com:johnpolacek/the-case-for-atomic-css.git">read this</a>).</p>
+			<p><small><strong>Missing something?</strong> Suggest new content via <a
+						href="https://github.com/johnpolacek/the-case-for-atomic-css">GitHub</a> or <a
+						href="https://twitter.com/johnpolacek">Twitter</a></small></p>
+		</div>
+	</section>
+	<section class="border-t">
+		<div class="block-960 block-center pad-3 s-pad-2">
+			<h2 class="h5">Foundational Posts</h2>
+			<ul>
+				<li class="pad-2-b">
+					<a class="h5"
+						href="https://www.smashingmagazine.com/2013/10/challenging-css-best-practices-atomic-approach/">Challenging
+						CSS Best Practices</a>
+					<div>by Thierry Koblenz</div>
+					<em><small>October 21, 2013</small></em>
+				</li>
+				<li class="pad-2-b">
+					<a class="h5" href="http://mrmrs.cc/writing/scalable-css/">CSS and Scalability</a>
+					<div>by Adam Morse</div>
+					<em><small>March 24, 2016</small></em>
+				</li>
+				<li class="pad-2-b">
+					<a class="h5" href="https://adamwathan.me/css-utility-classes-and-separation-of-concerns/">CSS Utility Classes
+						and &lsquo;Separation of Concerns&rsquo;</a>
+					<div>by Adam Wathan</div>
+					<em><small>August 7, 2017</small></em>
+				</li>
+			</ul>
+		</div>
+	</section>
+	<section class="border-t">
+		<div class="block-960 block-center pad-3 s-pad-2">
+			<h2 class="h5">Articles and Case Studies</h2>
+			<ul>
+				<li class="pad-2-b">
+					<a class="h5" href="https://tympanus.net/codrops/2013/01/22/defending-presentational-class-names/">Defending
+						Presentational Class Names</a>
+					<div>by Philip Walton</div>
+					<em><small>January 22, 2013</small></em>
+				</li>
+				<li class="pad-2-b">
+					<a class="h5" href="https://seesparkbox.com/foundry/naming_css_stuff_is_really_hard">Naming CSS Stuff is
+						Really Hard</a>
+					<div>by Ethan Muller</div>
+					<em><small>October 21, 2013</small></em>
+				</li>
+				<li class="pad-2-b">
+					<a class="h5" href="https://www.lucidchart.com/techblog/2014/01/31/atomic-css-tool-set/">Atomic CSS as a
+						toolset</a>
+					<div>by Alma Madsen</div>
+					<em><small>January 31, 2014</small></em>
+				</li>
+				<li class="pad-2-b">
+					<a class="h5" href="https://acss.io/thinking-in-atomic.html">Thinking in Atomic</a>
+					<div>by ACSS.io</div>
+					<em><small>April 30, 2015</small></em>
+				</li>
+				<li class="pad-2-b">
+					<a class="h5" href="http://jxnblk.com/writing/posts/rethinking-variables-in-css/">Rethinking Variables in
+						CSS</a>
+					<div>by Brent Jackson</div>
+					<em><small>May 8, 2015</small></em>
+				</li>
+				<li class="pad-2-b">
+					<a class="h5"
+						href="https://csswizardry.com/2015/06/contextual-styling-ui-components-nesting-and-implementation-detail/">Contextual
+						Styling: UI Components, Nesting and Implementation&nbsp;Detail</a>
+					<div>by Harry Roberts</div>
+					<em><small>June 13, 2015</small></em>
+				</li>
+				<li class="pad-2-b">
+					<a class="h5" href="http://www.jon.gold/2015/07/functional-css/">Functional Programming, CSS, and your
+						sanity</a>
+					<div>by Jon Gold</div>
+					<em><small>June 30, 2015</small></em>
+				</li>
+				<li class="pad-2-b">
+					<a class="h5"
+						href="https://medium.com/@cole_peters/building-and-shipping-functional-css-4f29b947bcb9">Building and
+						shipping functional CSS</a>
+					<div>by Cole Peters <small><em>(case study)</em></small></div>
+					<em><small>November 30, 2015</small></em>
+				</li>
+				<li class="pad-2-b">
+					<a class="h5" href="https://medium.com/buzzfeed-design/introducing-solid-1c16b1bf4868">Introducing Solid</a>
+					<div>by Emily Brick</div>
+					<em><small>December 2, 2015</small></em>
+				</li>
+				<li class="pad-2-b">
+					<a class="h5" href="http://johnpolacek.github.io/expressive-css/">Expressive CSS</a>
+					<div>by John Polacek</div>
+					<em><small>December 5, 2015</small></em>
+				</li>
+				<li class="pad-2-b">
+					<a class="h5"
+						href="https://medium.com/buzzfeed-design/how-i-learned-to-stop-worrying-and-love-the-atomic-class-98d6ccc45781">How
+						I Learned to Stop Worrying and Love the Atomic Class</a>
+					<div>by Sam Thurman</div>
+					<em><small>February 3, 2016</small></em>
+				</li>
+				<li class="pad-2-b">
+					<a class="h5" href="https://medium.com/techspiration-ideas-making-it-happen/future-css-dbc2cb8f1baf">Future
+						CSS</a>
+					<div>by J. Ky Marsh</div>
+					<em><small>April 3, 2016</small></em>
+				</li>
+				<li class="pad-2-b">
+					<a class="h5"
+						href="https://web.archive.org/web/20180331135805/http://cssmojo.com/a-retort-to-reuse-on-maintainablecss/">Reuse
+						or not reuse...</a>
+					<div>by Thierry Koblentz</div>
+					<em><small>May 26, 2016</small></em>
+				</li>
+				<li class="pad-2-b">
+					<a class="h5" href="https://marcelosomers.com/writing/rationalizing-functional-css/">Rationalizing Functional
+						CSS</a>
+					<div>by Marcelo Somers</div>
+					<em><small>June 9, 2016</small></em>
+				</li>
+				<li class="pad-2-b">
+					<a class="h5"
+						href="https://medium.com/@dakotaleemartinez/keeping-your-css-dry-with-tachyons-bb1c0dc66dce">Keeping your
+						CSS Dry with Tachyons</a>
+					<div>by Dakota Lee Martinez</div>
+					<em><small>June 23, 2016</small></em>
+				</li>
+				<li class="pad-2-b">
+					<a class="h5" href="https://github.com/chibicode/react-functional-css-protips">Functional CSS — The Good, The
+						Bad, and Some Protips for React.js&nbsp;Users</a>
+					<div>by Shu Uesugi</div>
+					<em><small>August 10, 2016</small></em>
+				</li>
+				<li class="pad-2-b">
+					<a class="h5" href="https://medium.engineering/simple-style-sheets-c3b588867899">Simple Style Sheets</a>
+					<div>by Anton Kovalyov</div>
+					<em><small>September 28, 2016</small></em>
+				</li>
+				<li class="pad-2-b">
+					<a class="h5"
+						href="https://medium.com/@philipardeljan/15kb-of-css-is-all-youll-ever-need-%EF%B8%8F-634da7258338">15kb of
+						CSS is all you&rsquo;ll ever need</a>
+					<div>by Philip Ardeljan</div>
+					<em><small>November 16, 2016</small></em>
+				</li>
+				<li class="pad-2-b">
+					<a class="h5" href="http://milanogw.net/front-end-strategy-for-products-that-scale">Front end strategy for
+						products that scale</a>
+					<div>by Emil Milanov</div>
+					<em><small>November 20, 2016</small></em>
+				</li>
+				<li class="pad-2-b">
+					<a class="h5" href="https://medium.com/@johnpolacek/kiss-my-classname-a-counterpoint-3ca41f0aed1a">Kiss My
+						Classname: A Counterpoint</a>
+					<div>by John Polacek</div>
+					<em><small>January 8, 2017</small></em>
+				</li>
+				<li class="pad-2-b">
+					<a class="h5" href="https://blog.dnsimple.com/2017/01/CSS-journey/">The journey of simplifying our CSS</a>
+					<div>by Sebastian Hermida</div>
+					<em><small>January 17, 2017</small></em>
+				</li>
+				<li class="pad-2-b">
+					<a class="h5"
+						href="https://web.archive.org/web/20180331141150/http://cssmojo.com/opinions_of_leaders_considered_harmful/">Opinions
+						of Leaders Considered Harmful</a>
+					<div>by Thierry Koblenz</div>
+					<em><small>January 22, 2017</small></em>
+				</li>
+				<li class="pad-2-b">
+					<a class="h5" href="http://danmall.me/articles/cooking-with-design-systems/">Cooking with Design Systems</a>
+					<div>by Dan Mall</div>
+					<em><small>February 28, 2017</small></em>
+				</li>
+				<li class="pad-2-b">
+					<a class="h5"
+						href="https://hackernoon.com/full-re-write-with-tachyons-and-functional-css-a-case-study-part-1-635ccb5fb00b">Full
+						re-write in 10 days with tachyons and functional CSS</a>
+					<div>by Simon Vrachliotis <small><em>(case study)</em></small></div>
+					<em><small>February 28, 2017</small></em>
+				</li>
+				<li class="pad-2-b">
+					<a class="h5"
+						href="https://medium.com/@johnpolacek/by-the-numbers-a-year-and-half-with-atomic-css-39d75b1263b4">By The
+						Numbers: A Year and Half with Atomic CSS</a>
+					<div>by John Polacek</div>
+					<em><small>May 31, 2017</small></em>
+				</li>
+				<li class="pad-2-b">
+					<a class="h5"
+						href="https://medium.com/the-many/takeaways-from-trying-out-tachyons-css-after-ages-using-bem-14c11a11dc2a">Takeaways
+						from trying out Tachyons CSS after ages using BEM</a>
+					<div>by Callum Jefferies</div>
+					<em><small>October 13, 2017</small></em>
+				</li>
+				<li class="pad-2-b">
+					<a class="h5" href="https://paulund.co.uk/using-a-utility-css-library">Using a Utility CSS Library</a>
+					<div>by Paul Underwood</div>
+					<em><small>November 20, 2017</small></em>
+				</li>
+				<li class="pad-2-b">
+					<a class="h5" href="https://css-tricks.com/growing-popularity-atomic-css/">On the Growing Popularity of Atomic
+						CSS</a>
+					<div>by Ollie Williams</div>
+					<em><small>November 24, 2017</small></em>
+				</li>
+				<li class="pad-2-b">
+					<a class="h5" href="https://medium.freecodecamp.org/acss-a-dynamic-atomic-css-library-402dff9756e0">How to
+						write better CSS in teams with ACSS — A dynamic Atomic CSS library</a>
+					<div>by Kushagra Gour</div>
+					<em><small>January 4, 2018</small></em>
+				</li>
+				<li class="pad-2-b">
+					<a class="h5" href="https://medium.freecodecamp.org/in-defense-of-utility-first-css-4f406acee6fb">In Defense
+						of Utility-First CSS</a>
+					<div>by Sarah Dayan</div>
+					<em><small>January 26, 2018</small></em>
+				</li>
+				<li class="pad-2-b">
+					<a class="h5" href="https://familiar.studio/blog/utility-first-css-framework">On Moving to a Utility-first CSS
+						Framework</a>
+					<div>by Debra Ohayon</div>
+					<em><small>February 28, 2018</small></em>
+					<div><small><a href="">See Slides</a></small></div>
+				</li>
+				<li class="pad-2-b">
+					<a class="h5" href="https://www.mikecr.it/ramblings/utility-classes-vs-inline-styles/">Utility classes vs.
+						inline styles</a>
+					<div>by Mike Crittenden</div>
+					<em><small>May 4, 2018</small></em>
+				</li>
+				<li class="pad-2-b">
+					<a class="h5" href="https://blog.rangle.io/styling-with-functional-css/">Simplify Styling with Functional
+						CSS</a>
+					<div>by Harry Nicholls</div>
+					<em><small>October 18, 2018</small></em>
+				</li>
+				<li class="pad-2-b">
+					<a class="h5" href="https://jvns.ca/blog/2018/11/01/tailwind--write-css-without-the-css/">Tailwind: style your
+						site without writing any CSS!</a>
+					<div>by Julia Evans</div>
+					<em><small>November 1, 2018</small></em>
+				</li>
+				<li class="pad-2-b">
+					<a class="h5"
+						href="https://blog.algolia.com/redesigning-our-docs-part-4-building-a-scalable-css-architecture/">Redesigning
+						Our Docs – Part 4 – Building a Scalable CSS Architecture</a>
+					<div>by Sarah Dayan</div>
+					<em><small>March 14th, 2019</small></em>
+				</li>
+				<li class="pad-2-b">
+					<a class="h5" href="https://blog.logrocket.com/css-utility-classes-library-extendable-styles/">CSS utility
+						classes: Your library of extendable styles</a>
+					<div>by Russell Bishop</div>
+					<em><small>October 23rd, 2019 </small></em>
+				</li>
+				<li class="pad-2-b">
+					<a class="h5" href="https://mxstbr.com/thoughts/tailwind/">Why I Love Tailwind</a>
+					<div>by Max Stoiber</div>
+					<em><small>December 7, 2020</small></em>
+				</li>
+				<li class="pad-2-b">
+					<a class="h5" href="https://frontstuff.io/no-utility-classes-arent-the-same-as-inline-styles">No, Utility
+						Classes Aren't the Same As Inline Styles</a>
+					<div>by Sarah Dayan</div>
+					<em><small>May 16, 2021</small></em>
+				</li>
+			</ul>
+		</div>
+	</section>
+	<section class="border-t">
+		<div class="block-960 block-center pad-3 s-pad-2">
+			<h2 class="h5">Presentations</h2>
+			<ul>
+				<li class="pad-2-b">
+					<a class="h5"
+						href="https://www.slideshare.net/renatoiwa/acss?qid=2ba9f704-b9cd-42cc-8c4c-e26daa7f2df5&v=&b=&from_search=9">ACSS:
+						Rethinking CSS Best Practices</a>
+					<div>by Renato Iwashima</div>
+					<em><small>October 23, 2013</small></em>
+					<div><small><a href="https://www.youtube.com/watch?v=ojj_-6Xiud4">Watch Video</a></small></div>
+				</li>
+				<li class="pad-2-b">
+					<a class="h5"
+						href="https://www.haikudeck.com/atomic-css-science-and-technology-presentation-dJ0xlFjhBQ">Atomic CSS</a>
+					<div>by Thierry Koblenz</div>
+					<em><small>November 18, 2013</small></em>
+					<div><small><a href="https://www.youtube.com/watch?v=bokjM0ZaizQ">Watch Video</a></small></div>
+				</li>
+				<li class="pad-2-b">
+					<a class="h5"
+						href="https://docs.google.com/presentation/d/14u8U6Oxt8RUIFmDjaAuMtJflIHKIZ-FQnHbbSv2tAjM/edit#slide=id.g53a38b223_4_75">Atomic
+						CSS: How to Take Control of Your CSS</a>
+					<div>by Amelia Downs</div>
+					<em><small>December 4, 2014</small></em>
+					<div><small><a href="https://www.youtube.com/watch?v=P2seO1yYz88">Watch Video</a></small></div>
+				</li>
+				<li class="pad-2-b">
+					<a class="h5" href="https://brendansudol.com/writing/atomic-css">Atomic CSS: Learning to love presentational
+						classes</a>
+					<div>by Brendan Subol</div>
+					<em><small>October 30, 2016</small></em>
+					<div><small><a href="https://brendansudol.com/decks/atomic-css/#/">See Slides</a></small></div>
+				</li>
+				<li class="pad-2-b">
+					<a class="h5" href="https://www.slideshare.net/pivorak/functional-immutable-css">Functional Immutable CSS</a>
+					<div>by Alex Topolyanskiy</div>
+					<em><small>December 26, 2016</small></em>
+					<div><small><a href="https://www.youtube.com/watch?v=Fjv30ZIYtyg&t=192s">Watch Video</a></small></div>
+				</li>
+				<li class="pad-2-b">
+					<a class="h5" href="http://johnpolacek.com/rethinking/">Rethinking CSS</a>
+					<div>by John Polacek</div>
+					<em><small>June 3, 2017</small></em>
+					<div><small><a href="http://johnpolacek.com/rethinking/">See Slides</a></small></div>
+				</li>
+				<li class="pad-2-b">
+					<a class="h5" href="http://slides.com/simonswiss/utility-first-all-the-rage#/">Utility-First CSS: What’s all
+						the rage?</a>
+					<div>by Simon Vrachliotis</div>
+					<em><small>December 13, 2017</small></em>
+					<div><small><a href="http://slides.com/simonswiss/utility-first-all-the-rage#/">See Slides</a></small></div>
+				</li>
+				<li class="pad-2-b">
+					<a class="h5" href="http://assets.eli.wtf/talks/functional-css-concatenate-2018/">Functional CSS: Clean &
+						composable UI on massive apps</a>
+					<div>by Eli Fitch</div>
+					<em><small>August 11, 2018</small></em>
+					<div><small><a href="http://assets.eli.wtf/talks/functional-css-concatenate-2018/">See Slides</a></small>
+					</div>
+				</li>
+				<li class="pad-2-b">
+					<a class="h5" href="http://assets.eli.wtf/talks/functional-css-concatenate-2018/">A Real-Life Journey Into the
+						Opinionated World of “Utility-First” CSS</a>
+					<div>by Simon Vrachliotis</div>
+					<em><small>October 29, 2018</small></em>
+					<div><small><a href="https://vimeo.com/294976504">Watch Video</a></small></div>
+				</li>
+				<li class="pad-2-b">
+					<a class="h5" href="https://www.dotconferences.com/2019/12/sarah-dayan-in-defense-of-utility-first-css">In
+						Defense of Utility-First CSS</a>
+					<div>by Sarah Dayan</div>
+					<em><small>December 4, 2019</small></em>
+					<div><small><a href="https://vimeo.com/294976504">Watch Video</a></small></div>
+				</li>
+			</ul>
+		</div>
+	</section>
+	<section class="border-t">
+		<div class="block-960 block-center pad-3 s-pad-2">
+			<h2 class="h5">Other</h2>
+			<ul>
+				<li class="pad-2-b">
+					<a class="h5" href="https://github.com/tachyons-css/tachyons/issues/12">How is tachyons different from inline
+						styles?</a>
+					<div>Discussion on the Tachyons GitHub Project</div>
+					<em><small>October 20, 2014</small></em>
+				</li>
+				<li class="pad-2-b">
+					<a class="h5" href="https://spec.fm/podcasts/does-not-compute/33746">Falling With Style</a>
+					<div>by Does Not Compute <small><em>(podcast)</em></small></div>
+					<em><small>March 29, 2016</small></em>
+				</li>
+				<li class="pad-2-b">
+					<a class="h5" href="https://twitter.com/_dte/status/726002852934594560">Here’s why I think designing systems
+						with tools/frameworks like Tachyons is a Good Idea&trade;</a>
+					<div>by Daniel Eden <small><em>(series of tweets)</em></small></div>
+					<em><small>April 29, 2016</small></em>
+				</li>
+				<li class="pad-2-b">
+					<a class="h5" href="http://www.fullstackradio.com/68">68: Building Interfaces with Utility-First CSS</a>
+					<div>by Full Stack Radio <small><em>(podcast)</em></small></div>
+					<em><small>July 19, 2017</small></em>
+				</li>
+				<li class="pad-2-b">
+					<a class="h5" href="https://simplecast.com/s/e6183d31">75: Diana Mounter - Design Systems and Utility Classes
+						at GitHub</a>
+					<div>by Full Stack Radio <small><em>(podcast)</em></small></div>
+					<em><small>October 25, 2017</small></em>
+				</li>
+				<li class="pad-2-b">
+					<a class="h5" href="http://www.fullstackradio.com/76">76: Tailwind CSS vs. the World</a>
+					<div>by Full Stack Radio <small><em>(podcast)</em></small></div>
+					<em><small>November 8, 2017</small></em>
+				</li>
+				<li class="pad-2-b">
+					<a class="h5" href="https://changelog.com/podcast/272">Functional CSS and Tachyons with Adam Morse</a>
+					<div>by The Changelog <small><em>(podcast)</em></small></div>
+					<em><small>November 10, 2017</small></em>
+				</li>
+				<li class="pad-2-b">
+					<a class="h5" href="https://devmode.fm/episodes/tailwind-css-utility-first-css-with-adam-watham">Tail­wind CSS
+						util­i­ty-first CSS with Adam Wathan</a>
+					<div>by devMode.fm <small><em>(podcast)</em></small></div>
+					<em><small>December 22, 2017</small></em>
+				</li>
+			</ul>
+		</div>
+	</section>
+	<section class="border-t">
+		<div class="block-960 block-center pad-3 s-pad-2">
+			<h2 class="h5">Companies Using Atomic CSS in Production</h2>
+			<ul class="pad-3-b clearfix">
+				<li class="pad-2-b w-half float-l">
+					<span class="h6">Facebook</span>
+				</li>
+				<li class="pad-2-b w-half float-l">
+					<span class="h6">Google</span>
+				</li>
+				<li class="pad-2-b w-half float-l">
+					<span class="h6">Microsoft</span>
+				</li>
+				<li class="pad-2-b w-half float-l">
+					<span class="h6">GitHub</span>
+				</li>
+				<li class="pad-2-b w-half float-l">
+					<span class="h6">NASA</span>
+				</li>
+				<li class="pad-2-b w-half float-l">
+					<span class="h6">Mashable</span>
+				</li>
+				<li class="pad-2-b w-half float-l">
+					<span class="h6">Yahoo!</span>
+				</li>
+				<li class="pad-2-b w-half float-l">
+					<span class="h6">Medium</span>
+				</li>
+				<li class="pad-2-b w-half float-l">
+					<span class="h6">Kickstarter</span>
+				</li>
+				<li class="pad-2-b w-half float-l">
+					<span class="h6">Twitch</span>
+				</li>
+				<li class="pad-2-b w-half float-l">
+					<span class="h6">TED</span>
+				</li>
+				<li class="pad-2-b w-half float-l">
+					<span class="h6">Buzzfeed</span>
+				</li>
+				<li class="pad-2-b w-half float-l">
+					<span class="h6">Tinder</span>
+				</li>
+				<li class="pad-2-b w-half float-l">
+					<span class="h6">Stack Overflow</span>
+				</li>
+				<li class="pad-2-b w-half float-l">
+					<span class="h6">Heroku</span>
+				</li>
+				<li class="pad-2-b w-half float-l">
+					<span class="h6">Algolia</span>
+				</li>
+				<li class="pad-2-b w-half float-l">
+					<span class="h6">Segment</span>
+				</li>
+				<li class="pad-2-b w-half float-l">
+					<span class="h6">Stripe</span>
+				</li>
+				<li class="pad-2-b float-l">
+					<span>See also <a href="https://tailwindcss.com/showcase">Tailwind Showcase</a> and <a
+							href="http://tachyons.io/gallery/">Tachyons Gallery</a></span>
+				</li>
+			</ul>
+		</div>
+	</section>
+</body>
+
 </html>
